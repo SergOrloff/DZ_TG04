@@ -86,6 +86,21 @@ async def set_commands(bot: Bot):
     ]
     await bot.set_my_commands(commands)
 
+@dp.message(Command(commands=["help"]))
+async def help_command(message: types.Message):
+    await message.answer(
+        "Я - Ваш гид по меню с кнопками и динамическим взаимодействием. \n"
+        "Используйте команды /start для приветствия, /links для ссылок на новости, музыку и видео"
+        " и /dynamic для интерактивных опций.\n"
+        "*Команды:*\n"
+        "/start - Запустить бота\n"
+        "/help - показать эту справку\n"
+        "/links - Показать ссылки на новости, музыку и видео\n"
+        "/dynamic - Показать динамическое меню"
+    )
+
+
+
 # Start polling
 if __name__ == '__main__':
     dp.startup.register(set_commands)
